@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{%block title%} Alias List {% endblock %}
+
+{% block content%} 
+
+{% for elem in targets %}
+    <div class="container">
+
+        <div class="card">
+            <div class="card-header">
+                <span class="font-weight-bold">{{elem.title}}<br></span>
+            </div>
+            <div class="card-body">
+                <div class="card-body">
+                        <a href="{% url 'target_edit' elem.pk %}">Edit</a> |
+                        <a href="{% url 'target_delete' elem.pk %}">Delete</a>
+                </div> 
+        </div>
+    </div>
+<p></p>
+{% endfor %}
+
+{%endblock%}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{%block title%} Alias List {% endblock %}
+
+{% block content%} 
+
+{% for elem in lists %}
+    {% comment %} <div class="container">
+        Alias:{{elem.alias}}<br>
+        Target:{{elem.target}}<br>
+        Start:{{elem.start}}<br>
+        End:{{elem.end}}<br> {% endcomment %}
+
+        {% comment %} {% if elem.end > now %} {% endcomment %}
+        {% comment %} {% if elem.is_past_due %}
+            <h5> {{elem.alias}} is active</h5>
+        {% else %}
+            <h5> {{elem.alias}} is no longer active </h5>
+        {% endif %} {% endcomment %}
+
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <span class="font-weight-bold">{{ elem.alias }}</span> &middot;
+                <span class="text-muted">by {{ elem.target }} | {{ elem.start }} | {{ elem.end }}</span>
+            </div>
+            <div class="card-body">
+                {% if elem.is_past_due %}
+                    <h5> {{elem.alias}} is active</h5>
+                {% else %}
+                    <h5> {{elem.alias}} is no longer active </h5>
+                {% endif %}
+                <div class="card-body">
+                        <p>{{ article.body }}</p>
+
+                        <a href="{% url 'alias_edit' elem.pk %}">Edit</a> |
+                        <a href="{% url 'alias_delete' elem.pk %}">Delete</a>
+                </div>
+        </div>
+    </div>
+<p></p>
+{% endfor %}
+
+{%endblock%}

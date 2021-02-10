@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <div class="container">
+
+        <h1> New Alias </h1>
+
+        <form action="" method="post">
+            {% csrf_token %}
+            <p>Alias: {{ form.alias }}</p>
+            <p>Target: {{form.target}}</p>
+            <p>Enter time in such form: MM/DD/YYYY HH:MM:SS.000000 </p>
+            <p>Time Start: {{form.start}}</p>
+            <p>Time End: {{form.end}}</p>
+
+
+            {{form.errors}}
+
+            <button class="btn btn-success ml-2" type="submit">Save</button>
+
+        </form>
+    </div>
+
+{% endblock content %}

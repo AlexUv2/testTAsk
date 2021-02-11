@@ -1,5 +1,5 @@
 # testTAsk
-Test task for Python Junior Developer vacancy in SirinSoftware.
+<h3>Test task for Python Junior Developer vacancy in SirinSoftware.</h3>
 
 
 For launching this project on your device you should follow next commands:

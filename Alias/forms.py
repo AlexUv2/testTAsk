@@ -11,6 +11,7 @@ from .models import Alias, Target
 class AliasForm(ModelForm):
 
     class Meta:
+        '''Setting datetime format and placeholders for fields here'''
         model = Alias
         fields = "__all__"
         target = forms.ModelChoiceField(queryset=Target.objects.all())

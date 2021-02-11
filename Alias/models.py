@@ -4,7 +4,8 @@ from django.urls import reverse
 from datetime import datetime
 
 
-class Target(models.Model):   #родительская
+class Target(models.Model):  
+    '''this is a model for Target field'''
     title = models.CharField(max_length=24, unique=True)
 
     def __str__(self):
@@ -17,16 +18,19 @@ class Target(models.Model):   #родительская
         return reverse("target")
 
 
-class Alias(models.Model): #дочерняя 
+class Alias(models.Model): 
+    '''This is Alias model with functions from the task'''
     alias = models.CharField(max_length=255)
     target = models.ForeignKey(Target, on_delete=models.CASCADE)
     start = models.DateTimeField(blank=True)
     end = models.DateTimeField(blank=True)
 
     def __str__(self):
+        '''Showing alias field'''
         return self.alias
     
     class Meta:
+        '''Sorting by target fields'''
         ordering = ('-target',)
 
     def get_absolute_url(self):
@@ -34,13 +38,15 @@ class Alias(models.Model): #дочерняя
 
     @property
     def is_past_due(self):
+        '''Cheking the end date while accepting it. If end date is later then now, it's good'''
         if self.end is None:
             return True
         return self.end > timezone.now()
     
 
 def get_aliases(target, time_from="01/01/1970 00:00:00.000000", time_to="01/01/1970 00:00:00.000000"):
-    '''Function for getting aliases by target name and date'''
+    '''Function for getting aliases by target name and date,
+    I had to hardcode here because I couldn't fix the bug with comparing datetime.datetime firlds'''
     alias_objects = Alias.objects.all()
     required_objects = []
 

@@ -18,4 +18,6 @@ For launching this project on your device you should follow next commands:
   - start Django project: $ python manage.py runserver
   
   
-  
+Unfortunantely I didn't make the option with None in the 'end' field. I couldn't do this and find any information how to do this in correct way.  
+
+In this app follows the CRUD model.
